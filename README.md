@@ -11,4 +11,4 @@ backed up files will never overlap
 will download, build, and install lua 5.4.7
   - if a new version is created, change 5.4.7 in the top of the batch file to whatever the new version is
   - the local environment path is copied to the clipboard once the script is completed (add the local env variable manually)
-  - external libraries could be places in the shared/lua/5.4 file
+  - external libraries could be placed in the shared/lua/5.4 file
