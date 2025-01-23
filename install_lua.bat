@@ -41,4 +41,4 @@ echo %HOMEDRIVE%\MinGW\lua-%R%\bin | Clip.exe
 echo If MinGW\Bin hasn't been added to your local Env Variable Path, go add that variable now
 echo The path has been added to your clipboard
 
-pause
+waitfor /SI SetupReady
