@@ -15,6 +15,13 @@ will download, build, and install lua 5.4.7
   - the local environment path is copied to the clipboard once the script is completed (add the local env variable manually)
   - external libraries could be placed in the shared/lua/5.4 file
 
+## build_main
+  - requires tdm-gcc and git bash
+  - will sort all these files into the system
+  - will build the srlua.exe and glue.exe files
+  - will install_lua onto your system
+  - no arguments at the moment
+
 ## build_lua
   - build a lua file into an exe from anywhere (needs terminal call ;( though) :D (granted you give the correct argument, which is legit just the filename with the extension)
   - see in the file the *%USERPROFILE%.personal* is the path for the respective local environment variable, so change that to whatever you desire, however you will be using the build file
