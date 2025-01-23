@@ -1,4 +1,9 @@
 @echo off
+if not exist \MinGW\lua-5.4.7 (
+ echo \MinGW\lua-5.4.7 directory not found -> run install_lua.bat
+ pause
+ exit
+)
 
 cd %USERPROFILE%\
 if exist .personal (rmdir /S /Q .personal)
