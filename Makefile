@@ -11,7 +11,7 @@ CC= gcc
 CFLAGS= $(INCS) $(WARN) -O2 $G
 WARN= -ansi -pedantic -Wall -Wextra
 INCS= -I$(LUAINC)
-LIBS= -L$(LUALIB) -llua -lm -ldl
+LIBS= -L$(LUALIB) -llua -lm
 EXPORT= -Wl,-E
 # for Mac OS X comment the previous line above or do 'make EXPORT='
 
