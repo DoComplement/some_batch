@@ -10,12 +10,8 @@ if exist .personal (rmdir /S /Q .personal)
 if exist some_batch (rmdir /S /Q some_batch)
 
 git clone -q https://github.com/DoComplement/some_batch.git
-
-ren some_batch .personal
-cd .\.personal
-
+ren some_batch .personal && cd .\.personal
 if not exist build_lua (mkdir build_lua)
-
 
 git clone -q https://github.com/LuaDist/srlua
 
