@@ -5,12 +5,12 @@ will simply copy the current System Environment Variables to a backup in case so
 backed up files will never overlap
 
 ## install_lua
-requires:
+-	will download, build, and install the most recent version of lua onto your system <br>
+### requires:
   -  **TDM-GCC** with renamed make file *(/TDM-GCC-64/bin/mingw32-make.exe -> .../make.exe)* to build lua files <br> https://jmeubank.github.io/tdm-gcc/download/
   - **Git Bash** for cloning a repository https://git-scm.com/install/
-  - **MinGW** for file compilation and management https://sourceforge.net/projects/mingw/files/latest/download
-
-will download, build, and install the most recent version of lua onto your system
+  - **MinGW** for file compilation and management https://sourceforge.net/projects/mingw/files/latest/download <br>
+### other:
   - the local environment path is copied to the clipboard once the script is completed (add the local environment variable manually)
   - external lua libraries are to be placed in the .../shared/lua/%VERSION% file
 
