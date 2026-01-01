@@ -1,13 +1,17 @@
 @echo off
-if not exist \MinGW\lua-5.4.7 (
- echo \MinGW\lua-5.4.7 directory not found -> run install_lua.bat
- pause
- exit
-)
 
 cd %USERPROFILE%\
-if exist .\.personal (rmdir /S /Q .\.personal)
-if exist .\some_batch (rmdir /S /Q .\some_batch)
+if exist .\.personal (
+	choice /M ".personal folder already exists, continue?"
+	
+	if errorlevel 2 (exit /b)
+)
+
+if exist .\.some_batch (
+	choice /M "some_batch folder already exists, continue?"
+	
+	if errorlevel 2 (exit /b)
+)
 
 git clone -q https://github.com/DoComplement/some_batch.git .personal
 cd .\.personal && mkdir build_lua
