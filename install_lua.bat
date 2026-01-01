@@ -1,23 +1,41 @@
 @echo off
+setlocal enabledelayedexpansion
+
+:: Get most recent version
+:: Download the current Lua download page
+curl -s https://www.lua.org/download.html > lua_page.html
+
+:: Find the current version of Lua
+for /f "delims=<>" %%A in ('findstr /c:"cd lua-" lua_page.html') do (
+    SET RELEASE=%%A
+	DEL lua_page.html
+    GOTO :found
+)
+
+echo Version not found, exiting
+exit
+
+:found
+
+SET RELEASE=%RELEASE:cd lua-=%
+SET VERSION=%RELEASE:~0, -2%
+SET PARENT=mingw
+
 cd \MinGW
 
-SET V=5.4
-SET R=%V%.7
-SET P=mingw
-
-if exist lua-%R% (ren lua-%R% lua-%R%-backup)
+if exist lua-%RELEASE% (ren lua-%RELEASE% lua-%RELEASE%-backup)
 
 :: download lua files
-curl -sLRO https://www.lua.org/ftp/lua-%R%.tar.gz
-@tar zxf lua-%R%.tar.gz
-@del .\lua-%R%.tar.gz
-@cd lua-%R%
-make %P%
+curl -sLRO https://www.lua.org/ftp/lua-%RELEASE%.tar.gz
+@tar zxf lua-%RELEASE%.tar.gz
+@del .\lua-%RELEASE%.tar.gz
+@cd lua-%RELEASE%
+make %PARENT%
 
 SET TO_INC= lua.h luaconf.h lualib.h lauxlib.h lua.hpp
 
 ::install
-mkdir bin,include,man\man1,share\lua\%V%,lib\lua\%V%
+mkdir bin,include,man\man1,share\lua\%VERSION%,lib\lua\%VERSION%
 
 
 move src\*.dll bin
@@ -37,8 +55,8 @@ ren doc docs
 
 
 ::add lua.exe to path
-echo %HOMEDRIVE%\MinGW\lua-%R%\bin | Clip.exe
-echo If MinGW\Bin hasn't been added to your local Env Variable Path, go add that variable now
+echo %HOMEDRIVE%\MinGW\lua-%RELEASE%\bin | Clip.exe
+echo If %HOMEDRIVE%\MinGW\lua-%RELEASE%\bin hasn't been added to your local Environment Variable Path, add that variable now
 echo The path has been added to your clipboard
 
 waitfor /SI SetupReady
